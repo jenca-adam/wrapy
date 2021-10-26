@@ -1,0 +1,22 @@
+status: 200
+date: Mon, 25 Oct 2021 18:28:07 GMT
+content-type: application/json; charset=utf-8
+connection: keep-alive
+x-powered-by: Express
+access-control-allow-origin: *
+cache-control: no-cache
+etag: W/"493-FHoTd4Ac3irj8oDCIY9rRTPE3VA"
+vary: Accept-Encoding
+cf-cache-status: DYNAMIC
+expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=AjGFtPvzoqwG2r5aIBxwgZ8pcpWZWZ%2FF0T%2BUvb%2Fts3YFWuM118jdO%2Fi7ml8aRFbI7Dk9NFlyRmzW6xHh86O2V%2FRmacRVMWChzJpXzW90FlHZGMu1FXu3%2FAci3BCHKMhb"}],"group":"cf-nel","max_age":604800}
+nel: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+server: cloudflare
+cf-ray: 6a3d80babc2c6997-FRA
+alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443"; ma=86400
+content-length: 1171
+-content-encoding: gzip
+content-location: https://randomuser.me/api?gender=female
+-varied-accept-encoding: gzip, deflate
+
+{"results":[{"gender":"female","name":{"title":"Mrs","first":"Elfriede","last":"Baumgart"},"location":{"street":{"number":2012,"name":"Fasanenweg"},"city":"Kölleda","state":"Hessen","country":"Germany","postcode":82582,"coordinates":{"latitude":"-40.5021","longitude":"-88.8743"},"timezone":{"offset":"-6:00","description":"Central Time (US & Canada), Mexico City"}},"email":"elfriede.baumgart@example.com","login":{"uuid":"0633476c-eed6-48e1-981e-003cff7593d7","username":"beautifultiger132","password":"kiwi","salt":"661xF4hg","md5":"eb6b3ac9cce86a00f1aa67d2dc96bb77","sha1":"c13390595fae87ed16af70b33e3e95351a315650","sha256":"41f4d9d6a9aea2d5c1d00f5d077ea5875cc9e7095c31a978c61f7d34953ad3f8"},"dob":{"date":"1947-04-29T12:54:46.959Z","age":74},"registered":{"date":"2005-09-07T14:14:11.911Z","age":16},"phone":"0994-3628425","cell":"0171-6316768","id":{"name":"","value":null},"picture":{"large":"https://randomuser.me/api/portraits/women/78.jpg","medium":"https://randomuser.me/api/portraits/med/women/78.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/78.jpg"},"nat":"DE"}],"info":{"seed":"e0f3f042dc892ec6","results":1,"page":1,"version":"1.3"}}

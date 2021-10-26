@@ -1,0 +1,83 @@
+status: 200
+server: nginx/1.16.1
+date: Mon, 25 Oct 2021 12:35:02 GMT
+content-type: text/html; charset=UTF-8
+connection: keep-alive
+cache-control: no-cache, private
+set-cookie: XSRF-TOKEN=eyJpdiI6InpISGNoMmt2STh1OUtnSjViQTdLcUE9PSIsInZhbHVlIjoiN0toSW96ZUJoOHpJZ1d3WmtSNTI4SVlsdE4renk2dWxvSHZZa1pCZXZmR2w3RnlTNjRseVwvVE5JcVE5RVY3aUYiLCJtYWMiOiI3YWUwYjcxMjA2MjQzYTgzYjZmZTllM2IxNDIzNjU0YmQ1NzE3ZjBmN2E5NmVmZWMyN2FmNDUxZTFkOTEzN2Y4In0%3D; expires=Mon, 25-Oct-2021 14:35:02 GMT; Max-Age=7200; path=/, genderize_session=eyJpdiI6Im5IQW9NbjBLb2VTcTIxbVBXOFZVdXc9PSIsInZhbHVlIjoiK0J2V3JybzBmM0VwWXdFXC92SldzMkVNajNvMjV5TEZtSjlSN1J1bWx2Q09adTdIRnBjTG1BOVE3eEFZckZhRGYiLCJtYWMiOiIxMDljNGY1OGQ2MzJiOTgyZDEzNzc3OWVhYWY0YTkyNmQxMzk2OTg3OTk2NDcxM2NiNGNiODFhNTQyZWQ0Zjc1In0%3D; expires=Mon, 25-Oct-2021 14:35:02 GMT; Max-Age=7200; path=/; httponly
+content-length: 2799
+-content-encoding: gzip
+content-location: https://agify.io/api/
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noindex">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="ODY7wnifU1tU8uVMHwQsGQOLgerqnE6wmFV4QTKw">
+        <title>Genderize.io</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fauna+One|Roboto:300,400,500&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MMRCRQN');</script>
+        <!-- End Google Tag Manager -->
+
+        <style>
+            html, body, #store {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                width: 100%;
+                min-height: 100%;
+                min-width: 100%;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            @-webkit-keyframes loop {
+                0% {
+                    -webkit-transform: translate(100%, 0);
+                    transform: translate(100%, 0);
+                }
+
+                100% {
+                    -webkit-transform: translate(-100%, 0);
+                    transform: translate(-100%, 0);
+                }
+            }
+
+            @keyframes  loop {
+                0% {
+                    -webkit-transform: translate(100%, 0);
+                    -ms-transform: translate(100%, 0);
+                    transform: translate(100%, 0);
+                }
+
+                100% {
+                    -webkit-transform: translate(-100%, 0);
+                    -ms-transform: translate(-100%, 0);
+                    transform: translate(-100%, 0);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MMRCRQN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <div id="store"></div>
+
+        <script src="https://kit.fontawesome.com/831055a18b.js"></script>
+        <script src="https://js.stripe.com/v3/"></script>
+        <script src="https://agify.io/js/Store.js"></script>
+    </body>
+</html>

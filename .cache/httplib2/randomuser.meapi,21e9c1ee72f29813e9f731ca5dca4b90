@@ -1,0 +1,22 @@
+status: 200
+date: Mon, 25 Oct 2021 18:38:35 GMT
+content-type: application/json; charset=utf-8
+connection: keep-alive
+x-powered-by: Express
+access-control-allow-origin: *
+cache-control: no-cache
+etag: W/"48f-4pQsTpll0uIh6iVGtnOKrALxgc4"
+vary: Accept-Encoding
+cf-cache-status: DYNAMIC
+expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=hgxFHOTJX%2F6YLdae5n0oc4Y%2FTi%2BsPBKTyqUYDUICrd6%2FNyXb3KfqqqCjGLoJ6mPjH00u57B%2Fu071rg5J5y1kR4QNd8%2F9Xg40UOqC8RaqPT0TAxVqe3hLSg2k2mq5X4dV"}],"group":"cf-nel","max_age":604800}
+nel: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+server: cloudflare
+cf-ray: 6a3d900f9b354e43-FRA
+alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443"; ma=86400
+content-length: 1167
+-content-encoding: gzip
+content-location: https://randomuser.me/api/
+-varied-accept-encoding: gzip, deflate
+
+{"results":[{"gender":"female","name":{"title":"Mrs","first":"Charlie","last":"Jones"},"location":{"street":{"number":4670,"name":"Coastal Highway"},"city":"Oakville","state":"Prince Edward Island","country":"Canada","postcode":"K9S 8H8","coordinates":{"latitude":"-65.7294","longitude":"63.3485"},"timezone":{"offset":"+7:00","description":"Bangkok, Hanoi, Jakarta"}},"email":"charlie.jones@example.com","login":{"uuid":"477d74ab-77c6-4425-b5fa-6c05f15e1ce9","username":"purplegorilla809","password":"wolf","salt":"EVxtkupu","md5":"2b511f8505d89439d5d55df600b9a1a7","sha1":"89e64030b14b9e56099fd599f5652806e0ec883b","sha256":"ea0c639447fd10314d3b14c56a3a4a72d0132b0a55e854b85c4df0b25d7e08c8"},"dob":{"date":"1947-07-27T17:43:17.998Z","age":74},"registered":{"date":"2007-10-06T23:41:45.500Z","age":14},"phone":"039-188-5371","cell":"782-738-2817","id":{"name":"","value":null},"picture":{"large":"https://randomuser.me/api/portraits/women/96.jpg","medium":"https://randomuser.me/api/portraits/med/women/96.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/96.jpg"},"nat":"CA"}],"info":{"seed":"4a3fec477652e139","results":1,"page":1,"version":"1.3"}}

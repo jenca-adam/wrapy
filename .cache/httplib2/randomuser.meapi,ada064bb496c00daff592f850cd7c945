@@ -1,0 +1,22 @@
+status: 200
+date: Sun, 24 Oct 2021 19:11:41 GMT
+content-type: application/json; charset=utf-8
+connection: keep-alive
+x-powered-by: Express
+access-control-allow-origin: *
+cache-control: no-cache
+etag: W/"485-RNkEBa9VrFvIfyglD0wx7YMwgDk"
+vary: Accept-Encoding
+cf-cache-status: DYNAMIC
+expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=nz9ZRuvwM1VCtyK1tDHYYRjZDIiLa3eckRlDRyMatflVaU%2FSkJQyyIBSZMPg7mERIAi1EdcPa1CMC8bxVBJ6xqryict7bmtwQzFLFzAy1uHYGx4%2FokXn15%2FP%2B%2F0DlQ4M"}],"group":"cf-nel","max_age":604800}
+nel: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+server: cloudflare
+cf-ray: 6a358329e8e84e97-FRA
+alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443"; ma=86400
+content-length: 1157
+-content-encoding: gzip
+content-location: https://randomuser.me/api
+-varied-accept-encoding: gzip, deflate
+
+{"results":[{"gender":"male","name":{"title":"Mr","first":"Bo","last":"Røvik"},"location":{"street":{"number":5952,"name":"Professor Lochmanns gate"},"city":"Hunn","state":"Rogaland","country":"Norway","postcode":"6810","coordinates":{"latitude":"52.0000","longitude":"-69.2649"},"timezone":{"offset":"+8:00","description":"Beijing, Perth, Singapore, Hong Kong"}},"email":"bo.rovik@example.com","login":{"uuid":"2bd9a5a8-57b2-4ab9-9f49-10f2d14de108","username":"goldenmeercat177","password":"warning","salt":"tBRjMUL1","md5":"b3e4859faab6ea91bbcf825646766149","sha1":"06785c4a28dda8b60981507a51e1467e3d4324f1","sha256":"d5ef5df4e49df8f38ce387cf2cad62d33a2c5bae897d8a33c0cfb78eea4194ee"},"dob":{"date":"1944-10-13T05:01:45.872Z","age":77},"registered":{"date":"2019-02-10T03:15:39.205Z","age":2},"phone":"80289005","cell":"40481064","id":{"name":"FN","value":"13104433159"},"picture":{"large":"https://randomuser.me/api/portraits/men/13.jpg","medium":"https://randomuser.me/api/portraits/med/men/13.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/13.jpg"},"nat":"NO"}],"info":{"seed":"7a938aa0d7dff311","results":1,"page":1,"version":"1.3"}}

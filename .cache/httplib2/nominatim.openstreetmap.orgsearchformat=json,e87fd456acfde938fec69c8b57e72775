@@ -1,0 +1,11 @@
+status: 200
+server: nginx
+date: Mon, 25 Oct 2021 17:57:39 GMT
+content-type: application/json; charset=UTF-8
+connection: keep-alive
+keep-alive: timeout=20
+access-control-allow-origin: *
+access-control-allow-methods: OPTIONS,GET
+content-location: https://nominatim.openstreetmap.org/search?format=json
+
+[]
