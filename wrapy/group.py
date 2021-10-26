@@ -1,4 +1,4 @@
-from .wrapy import WraPy as wrp
+from .wrapy import WraPy 
 from .module import *
 class WraPyGroup:
     def __init__(self,*args,**kwargs):
@@ -6,21 +6,28 @@ class WraPyGroup:
         self.kwargs=kwargs
         
     def WraPy(self,*args,**kwargs):
+        args,kwargs=self.merge(args,kwargs)
+        _ll=last_line().split('=')
         if 'name' not in kwargs and len(self.args)<3:
 
-            _ll=last_line().split('=')
             
             if (len(_ll)>1 or '=' in _ll) and isinstance(_ll[0],str) and  _ll[0].split()[0]==_ll[0] and '(' not in _ll[0] and '[' not in _ll[0]:
-                    __qualname__=_ll[0]
-                else:
-                    __qualname__='WraPy'
+                 name=_ll[0]
+            else:
+                name='WraPy'
+        else:
+            if 'name' in kwargs:
+                name=kwargs['name']
+                del kwargs['name']
+            else:
+                name=args[2]
+                del args[2]
 
- 
-        args,kwargs=self.merge(args,kwargs)
-        return WraPy(*args,**kwargs)
+         
+        return WraPy(*args,name=name,**kwargs)
     
-    def merge(self,args,kwargs)
-        
+    def merge(self,args,kwargs):
+        args=list(args) 
         args.extend(self.args)
 
         kwargs.update(self.kwargs)
