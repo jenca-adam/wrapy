@@ -8,7 +8,7 @@ class WraPyGroup:
     def WraPy(self,*args,**kwargs):
         args,kwargs=self.merge(args,kwargs)
         _ll=last_line().split('=')
-        if 'name' not in kwargs and len(self.args)<3:
+        if 'name' not in kwargs and len(args)<3:
 
             
             if (len(_ll)>1 or '=' in _ll) and isinstance(_ll[0],str) and  _ll[0].split()[0]==_ll[0] and '(' not in _ll[0] and '[' not in _ll[0]:
