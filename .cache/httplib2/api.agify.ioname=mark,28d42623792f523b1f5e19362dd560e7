@@ -1,0 +1,16 @@
+status: 200
+server: nginx/1.16.1
+date: Wed, 27 Oct 2021 14:11:23 GMT
+content-type: application/json; charset=utf-8
+content-length: 39
+connection: keep-alive
+access-control-allow-origin: *
+access-control-allow-methods: GET
+access-control-allow-headers: Content-Type, X-Genderize-Source
+x-rate-limit-limit: 1000
+x-rate-reset: 35316
+x-rate-limit-remaining: 998
+etag: W/"27-AG5r4ulSQsPNGkHwyau2o2Vz120"
+content-location: https://api.agify.io?name=mark
+
+{"name":"mark","age":49,"count":119611}

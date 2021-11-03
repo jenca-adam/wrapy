@@ -1,0 +1,26 @@
+status: 301
+content-type: text/plain; charset=utf-8
+connection: keep-alive
+cache-control: public, max-age=0, must-revalidate
+x-download-options: noopen
+date: Wed, 03 Nov 2021 15:15:59 GMT
+x-permitted-cross-domain-policies: none
+strict-transport-security: max-age=15552000; includeSubDomains
+x-dns-prefetch-control: off
+x-frame-options: SAMEORIGIN
+content-security-policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+x-content-type-options: nosniff
+vary: Accept
+referrer-policy: no-referrer
+expect-ct: max-age=0
+content-length: 39
+location: https://math.vercel.app/home
+x-xss-protection: 0
+x-vercel-cache: MISS
+age: 0
+server: Vercel
+x-vercel-id: fra1::sfo1::fj5zz-1635952559177-c35f6a76a2e2
+-x-permanent-redirect-url: https://math.vercel.app/home
+content-location: https://math.vercel.app/?from=
+
+Moved Permanently. Redirecting to /home

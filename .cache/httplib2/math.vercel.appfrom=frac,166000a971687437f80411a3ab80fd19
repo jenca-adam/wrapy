@@ -1,0 +1,35 @@
+status: 200
+content-type: image/svg+xml
+connection: keep-alive
+x-download-options: noopen
+strict-transport-security: max-age=15552000; includeSubDomains
+x-permitted-cross-domain-policies: none
+content-length: 847
+date: Wed, 03 Nov 2021 15:06:27 GMT
+x-frame-options: SAMEORIGIN
+content-security-policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+x-content-type-options: nosniff
+cache-control: max-age=604800
+expect-ct: max-age=0
+x-xss-protection: 0
+referrer-policy: no-referrer
+x-dns-prefetch-control: off
+x-vercel-cache: MISS
+age: 0
+server: Vercel
+x-vercel-id: fra1::sfo1::hzkhf-1635951987276-fc4675fb1386
+content-location: https://math.vercel.app/?from=\frac
+
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg style="vertical-align: -0.452ex" xmlns="http://www.w3.org/2000/svg" width="6.787ex" height="2.149ex" role="img" focusable="false" viewBox="0 -750 3000 950">
+<style>
+  * {
+    fill: black;
+  }
+  @media (prefers-color-scheme: dark) {
+    * {
+      fill: white;
+    }
+  }
+</style><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="merror" data-mjx-error="Missing argument for \frac" title="Missing argument for \frac"><title>Missing argument for \frac</title><g data-mml-node="mtext" style="font-family: serif"><text data-variant="-explicitFont" transform="scale(1,-1)" font-size="884px">\frac</text></g></g></g></g></svg>

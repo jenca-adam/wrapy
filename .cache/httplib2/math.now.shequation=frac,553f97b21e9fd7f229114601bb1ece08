@@ -1,0 +1,20 @@
+status: 308
+date: Wed, 03 Nov 2021 15:06:02 GMT
+content-type: text/plain
+connection: keep-alive
+access-control-allow-origin: *
+access-control-allow-methods: *
+access-control-allow-headers: *
+access-control-allow-credentials: true
+access-control-expose-headers: Location
+location: https://math.vercel.app/?equation=\frac
+refresh: 0;url=https://math.vercel.app/?equation=\frac
+server: Vercel
+x-vercel-id: fra1::ngz9p-1635951962550-2ff68596895f
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+cache-control: s-maxage=0
+x-vercel-cache: MISS
+-x-permanent-redirect-url: https://math.vercel.app/?equation=\frac
+content-location: https://math.now.sh?equation=\frac
+
+Redirecting to https://math.vercel.app/?equation=\frac (308)

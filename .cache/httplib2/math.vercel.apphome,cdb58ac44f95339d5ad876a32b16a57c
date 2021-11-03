@@ -1,0 +1,274 @@
+status: 200
+date: Wed, 03 Nov 2021 15:15:59 GMT
+content-type: text/html; charset=utf-8
+connection: keep-alive
+cache-control: s-maxage=604800
+content-disposition: inline; filename="index.html"
+etag: W/"3b626f5a5257df9cea0aea29461edba49fc8ec6d3fc7780a5c5a67a4a76c9017"
+access-control-allow-origin: *
+age: 1255158
+x-vercel-cache: HIT
+server: Vercel
+x-vercel-id: fra1::fj5zz-1635952559398-d3ecba00973a
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+content-length: 0
+-content-encoding: gzip
+content-location: https://math.vercel.app/home
+
+<html>
+  <head>
+    <title>Math API</title>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+      :root {
+        --bg: white;
+        --text: black;
+        --accent: rgb(94, 5, 255);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #040b31;
+          --text: white;
+          --accent: rgb(75 196 255);
+        }
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        padding: 15px;
+      }
+
+      a:link,
+      a:visited,
+      a:hover,
+      a:active {
+        color: var(--text);
+      }
+
+      @media screen and (max-width: 600px) {
+        #heading {
+          width: 100%;
+        }
+      }
+
+      .main {
+        max-width: 800px;
+        margin: 0 auto 80px auto;
+      }
+
+      .notation {
+        font-weight: bold;
+        color: rgb(239, 83, 81);
+      }
+
+      .equation {
+        font-weight: bold;
+        color: var(--accent);
+      }
+
+      h1,
+      h2 {
+        margin-top: 80px;
+      }
+
+      h3 {
+        margin-top: 30px;
+      }
+
+      #request {
+        width: 100%;
+        height: 120px;
+        padding: 16px;
+        font-size: 15px;
+        border: none;
+        background: var(--accent);
+        color: var(--bg);
+        border-radius: 4px;
+      }
+
+      .responseField {
+        display: block;
+        width: 100%;
+        padding: 16px;
+        font-size: 14px;
+        font-family: monospace;
+        border: 2px solid var(--accent);
+        background: var(--bg);
+        color: var(--accent);
+      }
+    </style>
+    <script
+      async
+      defer
+      data-website-id="77d81656-31f9-4892-b510-0ea2044298e5"
+      src="https://analytics.uechi.io/umami.js"
+    ></script>
+  </head>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (
+        /Safari/.test(navigator.userAgent) &&
+        !/Chrome/.test(navigator.userAgent)
+      ) {
+        const style = document.createElement("style");
+        style.innerHTML = `
+:root {
+  --bg: white;
+  --text: black;
+  --accent: rgb(94, 5, 255);
+}`;
+        document.body.appendChild(style);
+      }
+    });
+  </script>
+  <body style="font-family: monospace">
+    <div class="main">
+      <h1>Math API</h1>
+      <p>
+        <img
+          src="/?from=\xrightarrow{\infty}%5Ctext%7BPlace%20%7D%20%5CLaTeX%20%5Ctext%7B%20Math%20equation%20on%20anywhere%20as%20%7D%20%5Ctexttt%7B%3Cimg%3E%7D%20%5Ctext%7B%20tag.%7D"
+          id="heading"
+        />
+      </p>
+      <h2>Usage</h2>
+      <p style="font-size: 20px">
+        https://math.now.sh?from=<span class="equation"
+          >[LaTeX Math Equation]</span
+        >
+      </p>
+
+      <h3>Block notation</h3>
+      <p>
+        https://math.now.sh?<span class="notation">from</span>=<span
+          class="equation"
+          >\frac{1}{\Gamma(s)}\int_{0}^{\infty}\frac{u^{s-1}}{e^{u}-1}\mathrm{d}u</span
+        >
+      </p>
+      <img
+        src="/?from=%5Cfrac%7B1%7D%7B%5CGamma(s)%7D%5Cint_%7B0%7D%5E%7B%5Cinfty%7D%5Cfrac%7Bu%5E%7Bs-1%7D%7D%7Be%5E%7Bu%7D-1%7D%5Cmathrm%7Bd%7Du"
+      />
+
+      <h3>Inline notation</h3>
+      <p>
+        https://math.now.sh?<span class="notation">inline</span>=<span
+          class="equation"
+          >\frac{1}{\Gamma(s)}\int_{0}^{\infty}\frac{u^{s-1}}{e^{u}-1}\mathrm{d}u</span
+        >
+      </p>
+      <img
+        src="/?inline=%5Cfrac%7B1%7D%7B%5CGamma(s)%7D%5Cint_%7B0%7D%5E%7B%5Cinfty%7D%5Cfrac%7Bu%5E%7Bs-1%7D%7D%7Be%5E%7Bu%7D-1%7D%5Cmathrm%7Bd%7Du"
+      />
+
+      <h3>Color</h3>
+      <p>
+        By default, the color of equation will be black in light theme, or white
+        in dark theme. You can manually change this behavior by passing `color`
+        and `alternateColor` parameters.
+      </p>
+      <p>
+        https://math.now.sh?from=\sum&<span class="equation">color</span>=<span
+          class="notation"
+          >red</span
+        >
+      </p>
+      <img src="/?from=\sum&color=red" />
+
+      <p>
+        https://math.now.sh?from=\sum&<span class="equation">color</span>=<span
+          class="notation"
+          >red</span
+        >&<span class="equation">alternateColor</span>=<span class="notation"
+          >cyan</span
+        >
+      </p>
+      <img src="/?from=\sum&color=red&alternateColor=cyan" />
+
+      <h2>HTML Example</h2>
+      <a href="https://codesandbox.io/s/2w223oq5lr">
+        <img
+          alt="Edit 2w223oq5lr"
+          src="https://codesandbox.io/static/img/play-codesandbox.svg"
+        />
+      </a>
+      <p>
+        &lt;img src=&quot;https://math.now.sh?<span class="notation">from</span
+        >=<span class="equation">\log\prod^N_{i}x_{i}=\sum^N_i\log{x_i}</span
+        >&quot; /&gt;
+      </p>
+      <img src="/?from=\log\prod^N_{i}x_{i}=\sum^N_i\log{x_i}" />
+      <p>
+        &lt;img src=&quot;https://math.now.sh?<span class="notation"
+          >inline</span
+        >=<span class="equation">\log\prod^N_{i}x_{i}=\sum^N_i\log{x_i}</span
+        >&quot; /&gt;
+      </p>
+      <img src="/?inline=\log\prod^N_{i}x_{i}=\sum^N_i\log{x_i}" />
+      <h2>Markdown Example</h2>
+      <p>
+        ![Equation 1](https://math.now.sh?<span class="notation">from</span
+        >=<span class="equation">\text{softplus}(x)=\log(1+e^x)</span>)
+      </p>
+      <img src="/?from=%5Ctext%7Bsoftplus%7D(x)%3D%5Clog(1%2Be%5Ex)" />
+
+      <h2 id="online-editor">Online Editor</h2>
+      <textarea id="request" onKeyup="onTextChanged(this)">
+\text{Edit this}\ \LaTeX</textarea
+      >
+      <div>
+        <h3>Preview</h3>
+        <img id="responseImage" src="/?from=\text{Edit this}\%20\LaTeX" />
+        <h3>HTML</h3>
+        <input
+          id="responseHTML"
+          class="responseField"
+          readonly="true"
+          onClick="this.select();"
+          value='&lt;img src="https://math.now.sh?from=%5Ctext%7BEdit%20this%7D%20%5CLaTeX" /&gt;'
+        />
+        <h3>Markdown</h3>
+        <input
+          id="responseMarkdown"
+          class="responseField"
+          readonly="true"
+          onClick="this.select();"
+          value="![Equation](https://math.now.sh?from=%5Ctext%7BEdit%20this%7D%20%5CLaTeX)"
+        />
+        <h3>URL</h3>
+        <input
+          id="responseURL"
+          class="responseField"
+          readonly="true"
+          onClick="setTimeout(function(){this.setSelectionRange(0, 9999)},1)"
+          value="https://math.now.sh?from=%5CLaTeX"
+        />
+      </div>
+
+      <script>
+        function onTextChanged(e) {
+          const value = e.value;
+          const responseHTML = document.querySelector("#responseHTML");
+          const responseMarkdown = document.querySelector("#responseMarkdown");
+          const responseImage = document.querySelector("#responseImage");
+          const purifiedURL =
+            "https://math.now.sh?from=" +
+            encodeURIComponent(value)
+              .replace(/\(/g, "%28")
+              .replace(/\)/g, "%29");
+          responseHTML.value = '<img src="' + purifiedURL + '" />';
+          responseMarkdown.value = "![Equation](" + purifiedURL + ")";
+          responseURL.value = purifiedURL;
+          responseImage.src = purifiedURL;
+        }
+      </script>
+      <h2>Resources</h2>
+      <a href="https://github.com/uetchy/math-api">Source Code (GitHub)</a
+      ><br />
+      <a href="https://twitter.com/uechz">Author (Twitter)</a><br />
+      <a href="https://dev.to/uetchy/math-api-latex-math-as-svg-image-m4p"
+        >Math API: LaTeX Math as SVG image - DEV Community 👩‍💻👨‍💻</a
+      ><br />
+    </div>
+  </body>
+</html>

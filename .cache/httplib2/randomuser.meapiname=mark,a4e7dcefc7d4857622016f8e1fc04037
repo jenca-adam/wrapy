@@ -1,0 +1,22 @@
+status: 200
+date: Wed, 27 Oct 2021 14:11:55 GMT
+content-type: application/json; charset=utf-8
+connection: keep-alive
+x-powered-by: Express
+access-control-allow-origin: *
+cache-control: no-cache
+etag: W/"488-23GsjJUQYDdjaGSW7NaNrebg8k8"
+vary: Accept-Encoding
+cf-cache-status: DYNAMIC
+expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=XPV2BAAhusjf6B0w7eE29dWDzw05oDbm0ra5NyQ2cI5QkUV2MNKnew%2BwrUNL1M%2FedoKJWep5zqJ%2FwI8jN4olrrrZSoWcswSoQ2TaCd4FBuhnEll7lDAybArTR77XocBM"}],"group":"cf-nel","max_age":604800}
+nel: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+server: cloudflare
+cf-ray: 6a4c84313d346934-FRA
+alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443"; ma=86400
+content-length: 1160
+-content-encoding: gzip
+content-location: https://randomuser.me/api?name=mark
+-varied-accept-encoding: gzip, deflate
+
+{"results":[{"gender":"female","name":{"title":"Miss","first":"Déborah","last":"Porto"},"location":{"street":{"number":1953,"name":"Rua Quinze de Novembro "},"city":"Tatuí","state":"Ceará","country":"Brazil","postcode":27096,"coordinates":{"latitude":"-69.3536","longitude":"132.2005"},"timezone":{"offset":"-11:00","description":"Midway Island, Samoa"}},"email":"deborah.porto@example.com","login":{"uuid":"4c3039e3-3413-4120-8c15-b6ad5bc3da82","username":"goldenpanda473","password":"asterix","salt":"rfmhldFX","md5":"2bf7661666dd2ddf6c0b545023dc2ace","sha1":"f73b1ff5928ee5de096416425a58a82398fa9b08","sha256":"182320bcdc101055c6b24acc23400eb3c6ccd926966893fef1b57b524916f518"},"dob":{"date":"1980-08-20T15:43:33.494Z","age":41},"registered":{"date":"2016-08-12T03:16:36.138Z","age":5},"phone":"(77) 2865-1951","cell":"(04) 5378-8966","id":{"name":"","value":null},"picture":{"large":"https://randomuser.me/api/portraits/women/35.jpg","medium":"https://randomuser.me/api/portraits/med/women/35.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/35.jpg"},"nat":"BR"}],"info":{"seed":"7225a5bd97b6c2f2","results":1,"page":1,"version":"1.3"}}

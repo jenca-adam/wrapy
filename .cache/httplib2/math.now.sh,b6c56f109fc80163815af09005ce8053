@@ -1,0 +1,20 @@
+status: 308
+date: Wed, 03 Nov 2021 15:05:13 GMT
+content-type: text/plain
+connection: keep-alive
+access-control-allow-origin: *
+access-control-allow-methods: *
+access-control-allow-headers: *
+access-control-allow-credentials: true
+access-control-expose-headers: Location
+location: https://math.vercel.app/
+refresh: 0;url=https://math.vercel.app/
+server: Vercel
+x-vercel-id: fra1::jncbn-1635951913258-e4fec7057f62
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+cache-control: s-maxage=0
+x-vercel-cache: MISS
+-x-permanent-redirect-url: https://math.vercel.app/
+content-location: https://math.now.sh/
+
+Redirecting to https://math.vercel.app/ (308)
