@@ -1,7 +1,7 @@
 from .module import module
 from .pluralizer import plural,singular
 from .debug import debugprint as print
-import ujson
+import ujson,time
 def parselist(l,name='Item'):
     print(f'Parsing list called {name}')
     ix=0
@@ -27,6 +27,7 @@ def parsejson(jsonc):
             json[q]=parselist(json[q],name=str(q).capitalize())
     return json
 def makeclass(json,name='Result'):
+
     print(f'Making {name}')
     if json == {}:
         return json

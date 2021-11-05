@@ -19,8 +19,6 @@ class FutureObject:
                 return fn(_self.cl._inst,*args,**kwargs)
         _self.c.update({fn.__name__:decorated})
         _self.__dict__[fn.__name__]=decorated
-    def __call__(_self,fn):
-        return _self.function(fn)
 def future(c,d):
     print('future called')
     for i in d:

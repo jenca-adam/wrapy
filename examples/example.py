@@ -15,6 +15,6 @@ def resp(self):
 @ArchivedArticle.function
 def __getitem__(self,i):
     return self.response.docs[i]
-@ArchivedArticle.response.function
+@ArchivedArticle.response
 def u(self):
     return self

@@ -9,15 +9,23 @@ from .debug import debuglevel,debugprint as print
 from .mime import independent_header,MimeTypes
 from .fulldict import fullDict
 from . import unique
+from .future import FutureObject,future
 
 import ujson
 import functools
 class ArgumentRequiredError(Exception):pass
+class GetattrMeta(type):
+    def __getattr__(self,a):
+            if a not in self._funs:
+                self._funs[a]={}
+            return FutureObject(self._funs[a],self)
 
-def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__version__,main_args=[],arg_count=0,api_type='normal',args_required=False,child=None,autochild=True,root_url_fstring="{}",argmap={},headers={},kwarg_default={},arg_default=[],cache_timeout=None,enable_caching=False,**predefined_args):
+def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__version__,main_args=[],arg_count=0,api_type='normal',args_required=False,child=None,autochild=True,root_url_fstring="{}",argmap={},headers={},kwarg_default={},arg_default=[],cache_timeout=None,enable_caching=False,debug=False,**predefined_args):
     
-    class Result:
-        
+    class Result(metaclass=GetattrMeta):
+        if debug:
+            import builtins
+            print=builtins.print
         __module__=module()
         _root_url=root_url
         _user_agent=user_agent
@@ -73,6 +81,7 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
                     mimetype=unique.Unique(None,mimetype)
                     self._original=ujson.loads(ujson.dumps(dc))
                     object=makeclass(dc)
+                    dc=getreal(object)
                     print("Done.")
 
                 except CachingError:
@@ -117,8 +126,10 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
                 print('Dumping...')
                 cacher.dump(self,args,kwargs)
                 print('Loaded successfully')
-            self.__dict__.update(self._funs)
-            print('Removing self.function')
+            future(self.__dict__,self._funs)
+            print('Renaming self.function')
+            self._function=self.function
+            del self functiom
         @classmethod
         def function(self,fn):
             @functools.wraps(fn)
