@@ -19,6 +19,7 @@ class GetattrMeta(type):
             if a not in self._funs:
                 self._funs[a]={}
             return FutureObject(self._funs[a],self)
+     
 
 def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__version__,main_args=[],arg_count=0,api_type='normal',args_required=False,child=None,autochild=True,root_url_fstring="{}",argmap={},headers={},kwarg_default={},arg_default=[],cache_timeout=None,enable_caching=False,debug=False,**predefined_args):
     
@@ -54,7 +55,6 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
             
             __qualname__=name
         _name=__qualname__
-        
         def __init__(self,*args,**kwargs):
             self.__class__._inst=self
             cache_timeout=self._cache_timeout
@@ -127,11 +127,17 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
                 cacher.dump(self,args,kwargs)
                 print('Loaded successfully')
             future(self.__dict__,self._funs)
-            print('Renaming self.function')
-            self._function=self.function
-            del self functiom
         @classmethod
         def function(self,fn):
+            @functools.wraps(fn)
+            def decorated(*args,**kwargs):
+                try:
+                    return fn(*args,**kwargs)
+                except TypeError:
+                    return fn(self._inst,*args,**kwargs)
+            self._funs[fn.__name__]=decorated
+            setattr(self,fn.__name__,decorated)
+        def _function(self,fn):
             @functools.wraps(fn)
             def decorated(*args,**kwargs):
                 try:
