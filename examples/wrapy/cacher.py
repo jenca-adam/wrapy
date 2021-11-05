@@ -59,7 +59,9 @@ class Cacher:
         debugprint('Dumping...')
         dumped=dill.dumps(to_dump)
         debugprint('Writing..')
-        open(fn,'wb').write(dumped)
+        x=open(fn,'wb')
+        x.write(dumped)
+        x.close()
         debugprint('Dumping finished.')
     def load(self,args,kwargs,name,root_url):
         debugprint('Retrieving Hash')
@@ -72,6 +74,7 @@ class Cacher:
         fp = open(fn,'rb')
         debugprint(f'dill loading {fn}')
         obj=dill.load(fp)
+        fp.close()
         debugprint('Getting expirancy data')
         debugprint(f'Timeout is {obj["timeout"]}')
         tm=time.time()

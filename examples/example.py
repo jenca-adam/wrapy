@@ -6,3 +6,15 @@ ArchivedArticle=wrapy.WraPy('https://api.nytimes.com/svc/archive/v1/',api_type='
 Article=wrapy.WraPy('https://api.nytimes.com/svc/search/v2/articlesearch.json',main_args=['q'],argmap={'api_key':'api-key'},api_key='6EbhSPRBcbXSEoAvz2r7wkALp0R9zNbX')
 HTTPCat=wrapy.WraPy('https://http.cat/',api_type='url',arg_count=1)
 HTTPBin=wrapy.WraPy('http://httpbin.org/',num_retries=0,arg_count=1,api_type='url',arg_default=['get'],)
+@ArchivedArticle.function
+def __repr__(self):
+    return 'My Pretty Article'
+@ArchivedArticle.function
+def resp(self):
+    return self.response
+@ArchivedArticle.function
+def __getitem__(self,i):
+    return self.response.docs[i]
+@ArchivedArticle.response.function
+def u(self):
+    return self

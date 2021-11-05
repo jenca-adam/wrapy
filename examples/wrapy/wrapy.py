@@ -9,13 +9,20 @@ from .debug import debuglevel,debugprint as print
 from .mime import independent_header,MimeTypes
 from .fulldict import fullDict
 from . import unique
+from .future import FutureObject,future
 
 import ujson
+import functools
 class ArgumentRequiredError(Exception):pass
+class GetattrMeta(type):
+    def __getattr__(self,a):
+            if a not in self._funs:
+                self._funs[a]={}
+            return FutureObject(self._funs[a],self)
 
 def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__version__,main_args=[],arg_count=0,api_type='normal',args_required=False,child=None,autochild=True,root_url_fstring="{}",argmap={},headers={},kwarg_default={},arg_default=[],cache_timeout=None,enable_caching=False,**predefined_args):
     
-    class Result:
+    class Result(metaclass=GetattrMeta):
         
         __module__=module()
         _root_url=root_url
@@ -35,6 +42,8 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
         _arg_default=arg_default
         _cache_timeout=cache_timeout
         _encach=enable_caching
+        _funs={}
+        _inst=None
         if (len(_ll)>1 or '=' in _ll) and isinstance(_ll[0],str) and name=='WraPy' and _ll[0].split()[0]==_ll[0] and '(' not in _ll[0] and '[' not in _ll[0]:
             
             __qualname__=_ll[0]
@@ -43,8 +52,9 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
             
             __qualname__=name
         _name=__qualname__
-        
+
         def __init__(self,*args,**kwargs):
+            self.__class__._inst=self
             cache_timeout=self._cache_timeout
             print('Parsing arguments')
             args=list(args)
@@ -69,6 +79,7 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
                     mimetype=unique.Unique(None,mimetype)
                     self._original=ujson.loads(ujson.dumps(dc))
                     object=makeclass(dc)
+                    dc=getreal(object)
                     print("Done.")
 
                 except CachingError:
@@ -107,11 +118,25 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
                 dc=list(dc.values())[0]
             print('Updating self.__dict__')
             self.__dict__.update(dc.__dict__ if hasattr(dc,'__dict__') else dc)
-            self._original=fullDict(self._original)
+            
+            #self._original=fullDict(self._original)
             if self._encach:
                 print('Dumping...')
                 cacher.dump(self,args,kwargs)
                 print('Loaded successfully')
+            future(self.__dict__,self._funs)
+            print('Removing self.function')
+        @classmethod
+        def function(self,fn):
+            @functools.wraps(fn)
+            def decorated(*args,**kwargs):
+                try:
+                    return fn(*args,**kwargs)
+                except TypeError:
+                    return fn(self._inst,*args,**kwargs)
+            self._funs[fn.__name__]=decorated
+            setattr(self,fn.__name__,decorated)
+
         def __makeargs(self,args):
             
             if args_required and len(args)!=len(self._main_args)+self._arg_count:
