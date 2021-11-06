@@ -10,8 +10,6 @@ WraPy is a pythonic tool to create API wrappers in one function call.
 
 Typical WraPy usage goes on like this:
 
-:python:
-`
-import wrapy
-my_wrapper = wrapy.WraPy('https://api.example.com/')
-`
+        import wrapy
+        my_wrapper = wrapy.WraPy('https://api.example.com/')
+
