@@ -22,7 +22,11 @@ class FutureObject:
     def __call__(_self,fn):
         return _self.function(fn)
 def future(c,d):
+    
     for i in d:
+        if not i:
+            continue
+
         if callable(d[i]):
             if isinstance(c.get(i,None),list):
                 print(f'setting on {i}')

@@ -26,7 +26,7 @@ class Downloader:
         if _client.__name__=='requests':
             self.session=_client.Session()
         if _client.__name__=='httplib2':
-            self.h=_client.Http('.cache/httplib2')
+            self.h=_client.Http()
     def download(self,url,num_retries=0,user_agent='python-wrapy/'+__version__,headers={}):
         print(f'Requesting {url}')
         status_code,host=200,urllib.parse.urlsplit(url).netloc
