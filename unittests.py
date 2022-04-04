@@ -31,6 +31,9 @@ class TestWraPyCache(unittest.TestCase):
         tx=timeit.timeit('x(q="berlin")',number=1,globals=globals())
         tx2=timeit.timeit('x(q="berlin")',number=1,globals=globals())
         self.assertGreater(tx,tx2)
-        
+class TestWraPyPost(unittest.TestCase):
+    def test_post_form(self):
+        x=wrapy.WraPy('http://httpbin.org/post',api_type='post')
+        tx=x(abcd='efgh')
 
 unittest.main()
