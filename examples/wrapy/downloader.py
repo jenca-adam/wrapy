@@ -3,55 +3,84 @@ import urllib.parse
 from .mime import *
 from .debug import debuglevel,debugprint as print
 from .version import __version__
+from .form import encode
+from .urllibpost  import makePost
+from .credents import credentencode
 warnings.filterwarnings('ignore',category=ResourceWarning)
 class UsingDefaultClientWarning(UserWarning):pass
 class HTTPError(Exception):pass
-try:
-    import httplib2
-    _client=httplib2
+try: 
+    import httpy
+    _client=httpy
 except:
+
     try:
-        import requests
-        _client=requests
+        import httplib2
+        _client=httplib2
     except:
-        warnings.warn(UsingDefaultClientWarning('Neither httplib2 nor requests are installed. Using default web client (urllib.request)'))
-        import urllib.request
-        _client=urllib.request
+        try:
+            import requests
+            _client=requests
+        except:
+            warnings.warn(UsingDefaultClientWarning('Neither httplib2 nor requests are installed. Using default web client (urllib.request)'))
+            import urllib.request
+            _client=urllib.request
+
 import http.client
 http.client.HTTPConnection.debuglevel=debuglevel
 if _client.__name__=='httplib2':
     _client.debuglevel=debuglevel
+
 class Downloader:
     def __init__(self):
         if _client.__name__=='requests':
             self.session=_client.Session()
         if _client.__name__=='httplib2':
-            self.h=_client.Http()
-    def download(self,url,num_retries=0,user_agent='python-wrapy/'+__version__,headers={}):
+            self.h=_client.Http('.cache/httplib2')
+    def download(self,
+                url,
+                credentials=(),
+                method='GET',
+                body=b'',
+                num_retries=0,
+                user_agent='python-wrapy/'+__version__,
+                headers={},
+                content_type='application/x-www-form-urlencoded'
+                ):
         print(f'Requesting {url}')
+        headers={'Content-Type':content_type}
+        if credentials:
+            authdr={'Authorization':'Basic '+credentencode(*credentials)}
+            headers.update(authdr)
         status_code,host=200,urllib.parse.urlsplit(url).netloc
         
         headers=headers
         headers.update({'User-Agent':user_agent})
+        if method!='GET':
+            addhdr,body=encode(body,content_type)
+            headers.update(addhdr)
         print(f'Client is {_client.__name__}')
         if _client.__name__=='httplib2':
             
-            r,c=self.h.request(url,headers=headers)
+            r,c=self.h.request(url,method=method,headers=headers,body=body)
             if r.status>399:
                 status_code=r.status
                 reason=r.reason
             else:
                 return detect(r),c
+        elif _client.__name__=='httpy':
+            resp=httpy.request(url,method=method,headers=headers,body=body,debug=debuglevel)
+
         elif _client.__name__=='requests':
-            
-            x= _client.get(url,headers=headers)
+            x= _client.request(method,url,headers=headers,data=body)
             if x.ok:
                 return detect(x),x.text
             status_code=x.status_code
             reason=x.reason
         elif _client.__name__=='urllib.request':
-            rq=_client.Request(url)
-            rq.headers=headers
+            rq=makePost(_client.Request(url),body,ctype)
+            
+
             try:
                 n=urlopen(rq)
 

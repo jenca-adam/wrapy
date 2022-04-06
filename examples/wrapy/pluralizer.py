@@ -1,4 +1,7 @@
-import inflect
+try:
+    import inflect
+except ImportError:
+    from . import simplu as inflect
 engine=inflect.engine()
 def plural(word):
     if word.endswith('s'):

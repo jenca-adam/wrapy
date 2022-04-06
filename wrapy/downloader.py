@@ -9,17 +9,23 @@ from .credents import credentencode
 warnings.filterwarnings('ignore',category=ResourceWarning)
 class UsingDefaultClientWarning(UserWarning):pass
 class HTTPError(Exception):pass
-try:
-    import httplib2
-    _client=httplib2
+try: 
+    import httpy
+    _client=httpy
 except:
+
     try:
-        import requests
-        _client=requests
+        import httplib2
+        _client=httplib2
     except:
-        warnings.warn(UsingDefaultClientWarning('Neither httplib2 nor requests are installed. Using default web client (urllib.request)'))
-        import urllib.request
-        _client=urllib.request
+        try:
+            import requests
+            _client=requests
+        except:
+            warnings.warn(UsingDefaultClientWarning('Neither httpy,httplib2 nor requests are installed. Using default web client (urllib.request)'))
+            import urllib.request
+            _client=urllib.request
+
 import http.client
 http.client.HTTPConnection.debuglevel=debuglevel
 if _client.__name__=='httplib2':
@@ -62,6 +68,9 @@ class Downloader:
                 reason=r.reason
             else:
                 return detect(r),c
+        elif _client.__name__=='httpy':
+            resp=httpy.request(url,method=method,headers=headers,body=body,debug=debuglevel)
+
         elif _client.__name__=='requests':
             x= _client.request(method,url,headers=headers,data=body)
             if x.ok:

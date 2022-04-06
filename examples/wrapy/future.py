@@ -22,11 +22,7 @@ class FutureObject:
     def __call__(_self,fn):
         return _self.function(fn)
 def future(c,d):
-    
     for i in d:
-        if not i:
-            continue
-
         if callable(d[i]):
             if isinstance(c.get(i,None),list):
                 print(f'setting on {i}')
@@ -39,12 +35,16 @@ def future(c,d):
             c[i]=d[i]
 
         elif isinstance(d[i],dict) and i in c:
+            if not hasattr(c.get(i,None),'__dict__'):
+                continue
+
             if isinstance(c.get(i,None),list):
                 for x in c[i]:
                     print(f'setting on {x}')
                     
                     future(x.__dict__,d[i])
                 return
+            print(i)
             future(c[i].__dict__,d[i])
     print(c)
 

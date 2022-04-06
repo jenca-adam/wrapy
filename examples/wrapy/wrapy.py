@@ -21,13 +21,14 @@ class GetattrMeta(type):
             return FutureObject(self._funs[a],self)
      
 
-def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__version__,main_args=[],arg_count=0,api_type='normal',args_required=False,child=None,autochild=True,root_url_fstring="{}",argmap={},headers={},kwarg_default={},arg_default=[],cache_timeout=None,enable_caching=False,debug=False,**predefined_args):
+def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__version__,main_args=[],arg_count=0,api_type='normal',args_required=False,child=None,autochild=True,root_url_fstring="{}",argmap={},headers={},kwarg_default={},arg_default=[],content_type='application/x-www-form-urlencoded',cache_timeout=None,enable_caching=False,debug=False,slash=True,**predefined_args):
     
     class Result(metaclass=GetattrMeta):
         if debug:
             import builtins
             print=builtins.print
         __module__=module()
+        _slash=slash
         _root_url=root_url
         _user_agent=user_agent
         _num_retries=num_retries
@@ -37,7 +38,8 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
         _child=child
         _api_type=api_type
         _argmap=argmap
-        _endpoint=getEndpoint(api_type)
+        _endpoint_class=getEndpoint(api_type)
+        _apitype=api_type
         _root_url_fstring=root_url_fstring
         _arg_count=arg_count
         _headers=headers
@@ -46,6 +48,7 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
         _cache_timeout=cache_timeout
         _encach=enable_caching
         _funs={}
+        _ctype=content_type
         _inst=None
         if (len(_ll)>1 or '=' in _ll) and isinstance(_ll[0],str) and name=='WraPy' and _ll[0].split()[0]==_ll[0] and '(' not in _ll[0] and '[' not in _ll[0]:
             
@@ -57,14 +60,23 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
         _name=__qualname__
         def __init__(self,*args,**kwargs):
             self.__class__._inst=self
+            credentials=kwargs.get('credentials')
+            if 'credentials' in kwargs:
+                del kwargs['credentials']
             cache_timeout=self._cache_timeout
             print('Parsing arguments')
             args=list(args)
             args,kwargs=self.__default(kwargs,args)
+
+            if self._api_type.startswith('post'):
+                kwargs={'data':kwargs,'credentials':credentials}
+            else:
+                kwargs['credentials']=credentials
+
             kwargs.update(self.__makekwargs(self._predefined_args))
             args,k=self.__makeargs(args)
             kwargs.update(k)
-
+            print(kwargs)
             if self._encach:
                 print('Caching is Enabled')
                 if self._cache_timeout is None:
@@ -87,7 +99,7 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
                 except CachingError:
                     print('Cache expired! Retrieving again ... ')
                     print('Getting Original from server')
-                    mimetype,self._original=self._endpoint(self._root_url,self._user_agent,self._root_url_fstring,self._headers).connect(num_retries,*args,**kwargs)
+                    mimetype,self._original=self._endpoint(self._root_url,self._user_agent,self._root_url_fstring,self._headers,self._slash).connect(num_retries,*args,**kwargs)
                     print("Calling makeclass")
                     if mimetype!=MimeTypes.IMAGE:
                         object=makeclass(ujson.loads(ujson.dumps(self._original)))
@@ -98,7 +110,7 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
                     dc=getreal(object)
             else:
                 print('Getting Original from server')
-                self.mimetype,self._original=self._endpoint(self._root_url,self._user_agent,self._root_url_fstring,self._headers).connect(num_retries,*args,**kwargs)
+                self.mimetype,self._original=self._endpoint(self._root_url,self._user_agent,self._root_url_fstring,self._headers,self._slash).connect(num_retries,*args,**kwargs)
                 print("Calling makeclass")
                 if self.mimetype!=MimeTypes.IMAGE:
                     object=makeclass(ujson.loads(ujson.dumps(self._original)))
@@ -127,6 +139,10 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
                 cacher.dump(self,args,kwargs)
                 print('Loaded successfully')
             future(self.__dict__,self._funs)
+        def _endpoint(self,*args,**kwargs):
+            if self._api_type.startswith('post'):
+                kwargs.update({'content_type':self._ctype})
+            return self._endpoint_class(*args,**kwargs)
         @classmethod
         def function(self,fn):
             @functools.wraps(fn)
@@ -157,8 +173,9 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
             
             x={}
             a=[]
-            
-            if self._endpoint==URLEndpoint or self._endpoint==CombinedEndpoint:
+            if self._api_type.startswith('post'):
+                return args,x
+            if self._endpoint_class==URLEndpoint or self._endpoint_class==CombinedEndpoint:
                 print('URL endpoint')
                 if self._endpoint==URLEndpoint or not self._main_args:
                     print('Exactly')
@@ -169,7 +186,7 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
                         print(f'Popping {i}') 
                         a.append(args.pop(0))
             
-            if self._endpoint == ParamEndpoint or self._endpoint==CombinedEndpoint:
+            if self._endpoint_class == ParamEndpoint or self._endpoint_class==CombinedEndpoint:
                 print('Param endpoint')
                 
                 index=0
@@ -186,6 +203,7 @@ def WraPy(root_url,num_retries=0,name='WraPy',user_agent='python-wrapy/'+__versi
                             break
                         
                         index+=1
+
             
             return [str(i) for i in a],x
         def __makekwargs(self,args):
