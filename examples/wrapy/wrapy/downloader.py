@@ -22,7 +22,7 @@ except:
             import requests
             _client=requests
         except:
-            warnings.warn(UsingDefaultClientWarning('Neither httpy,httplib2 nor requests are installed. Using default web client (urllib.request). This might cause some issues'))
+            warnings.warn(UsingDefaultClientWarning('Neither httpy,httplib2 nor requests are installed. Using default web client (urllib.request)'))
             import urllib.request
             _client=urllib.request
 
@@ -45,8 +45,7 @@ class Downloader:
                 num_retries=0,
                 user_agent='python-wrapy/'+__version__,
                 headers={},
-                content_type='application/x-www-form-urlencoded',
-                debuglevel=0
+                content_type='application/x-www-form-urlencoded'
                 ):
         print(f'Requesting {url}')
         headers={'Content-Type':content_type}
